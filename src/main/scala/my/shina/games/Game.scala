@@ -10,6 +10,7 @@ object Game extends App {
     """"bye" to leave the Game"""
 
   def play(cmd:String):Unit= {
+
     val findRealSteps: List[String]=> List[Option[Int]]={
       steps => {
         val tentativeSteps = steps.mkString(" ").split("\\D+").filter(_.nonEmpty).map(_.toInt).map(Option(_)).toList
@@ -26,6 +27,7 @@ object Game extends App {
 
         name.moves(newSteps.head,newSteps.tail.head)
         }
+      //case "prank mode" :: on_off ::Nil=> GooseBoard.setPrankMode()
       case _ => println(s"no action linked to such command \n$usage")
     }
 

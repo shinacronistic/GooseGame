@@ -10,6 +10,10 @@ object GooseBoard {
 
   private var players:BoardState = Map()
 
+  var prankModeOn:Boolean=true
+
+  //def setPrankMode(on: Boolean) = prankModeOn=on;s"prank mode set"
+
   def getPlayers:Set[Player] = players.keys.toSet
 
   val spaceList:Map[Int,Class[_ <: BoardSpace]] = {
@@ -71,7 +75,7 @@ object GooseBoard {
 
         s"""$player moves $ifAgain to ${attempt.getBoardSpaceName}.""".appendToLog
 
-        prankOthers(player,oldState)
+        if (prankModeOn) prankOthers(player,oldState)
 
         attempt.getBoardSpace.endState(player,players).get
 

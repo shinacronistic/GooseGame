@@ -47,7 +47,7 @@ object ImplicitTools {
 
     def appendAndPrint(message:String) = {
       append(message)
-      val lines = logLines.map(l => l.getMessage)
+      val lines = logLines.map(_.getMessage)
       println(lines.mkString(" "))
       logLines = List[GameLog]()
 
